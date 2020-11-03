@@ -1,13 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {ApolloClient} from 'apollo-client';
+import {ApolloProvider} from 'react-apollo';
+import {onError} from 'apollo-link-error';
+import {ApolloLink} from 'apollo-link';
+import { createUploadLink } from 'apollo-upload-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const httpLink = createUploadLink({
+  uri: "http: //localhost:4003/graphql",
+  
+});
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.forEach(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
+    );
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
+const cache = new InMemoryCache();
+
+const link = ApolloLink.from([errorLink, httpLink]);
+
+const client = new ApolloClient({
+    link,
+    cache,
+    resolvers:{}
+   
+});
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
