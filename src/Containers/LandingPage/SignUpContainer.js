@@ -5,7 +5,10 @@ const NotItContainer = ({bgColor,nheight,nwidth,borderradius,children}) =>{
         backgroundColor: bgColor || "#ffffff",
         height:nheight || "100vh",
         width: nwidth || "100%",
-        borderRadius:borderradius || "0"
+        borderRadius:borderradius || "0",
+        display:"flex",
+        flexDirection:"column",
+        alignItems:"center"
     }
    return ( 
     <div style={style} >{children}</div>

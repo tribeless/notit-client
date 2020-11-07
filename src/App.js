@@ -1,8 +1,8 @@
 import React from 'react';
-import SignUpForm from './Containers/LandingPage/SignUpForm';
+import SignUp from './Containers/LandingPage/SignUp';
 function App() {
   return (
-    <SignUpForm />
+    <SignUp />
   );
 }
 
