@@ -6,27 +6,37 @@ import TextInputs from '../../Components/TextInputs';
 import NotitStyles from '../../Components/NotitStyles';
 import NotitBtn from '../../Components/NotitBtn';
 import NotitFlex from './NotitFlex';
+import {emailRegex,passwordRegex} from "../../Utils/Constants";
 
 const SignUpFormValidation = Yup.object().shape({
-    firstName:Yup.string().required("Please enter your firstName"),
-    lastName:Yup.string().required("Please enter your lastName"),
-    email:Yup.string().required("Please enter your email address"),
-    password:Yup.string().min(8).required("Please enter your password")
+    firstName:Yup.string().required(),
+    lastName:Yup.string().required(),
+    email: Yup.string().required().matches(emailRegex,"Enter a valid email"),
+    password:Yup.string().matches(passwordRegex,"Enter a longer password").required()
 })
 
-const Forms = () =>{
+const Forms = ({formData,setFormData}) =>{
     const style = NotitStyles();
+    const {data} = formData;
     return (
  <Formik 
 
     initialValues={{
-    firstName:"",
-    lastName:"",
-    email:"",
-    password:""
+    firstName:data.firstName || "",
+    lastName:data.lastName || "",
+    email:data.email || "",
+    password:data.password || ""
     }}
 
     onSubmit={(values) =>{
+        setFormData({
+            data:{
+                firstName:values.firstName,
+                lastName:values.lastName,
+                email:values.email,
+                password:values.password
+            }
+        })
         const input ={
             firstName:values.firstName,
             lastName:values.lastName,
@@ -37,31 +47,42 @@ const Forms = () =>{
 
     validationSchema={SignUpFormValidation}
 >
-{({setFieldValue,values,isSubmitting})=>(
-        <FormikForm>
+{({setFieldValue,values,errors,isSubmitting})=>(
+        <FormikForm style={style.form_styles}>
             <NotitFlex direction="row">
-           <Form.Item label="FirstName" name="firstName">
-                  <TextInputs type="text" style={style.name_inputs} />
+           <Form.Item label="FirstName" name="firstName" value={values.firstName} onChange={(e)=>{
+                setFieldValue("firstName",e.target.value,true)
+            }}>
+                  <TextInputs type="text" style={errors.firstName ? style.errors : style.name_inputs} />
              </Form.Item>
-             <ErrorMessage component="div" name="firstName" />
-            <Form.Item label="LastName" name="lastName" style={{marginLeft:"40px"}}>
-                  <TextInputs type="text" style={style.name_inputs} />
+
+            <Form.Item label="LastName" name="lastName" style={{marginLeft:"40px"}} value={values.lastName} onChange={(e)=>{
+                setFieldValue("lastName",e.target.value,true)
+            }}>
+                  <TextInputs type="text" style={errors.lastName ? style.errors : style.name_inputs}/>
              </Form.Item>
-             <ErrorMessage component="div" name="lastName" />
              </NotitFlex>
+
              <NotitFlex direction="column">
-            <Form.Item label="Email" name="email">
-                  <TextInputs type="text" style={style.text_inputs} />
+            <Form.Item label="Email" name="email" value={values.email} onChange={(e)=>{
+                setFieldValue("email",e.target.value,true)
+            }}>
+                  <TextInputs type="text" style={errors.email ? style.text_errors : style.text_inputs}/>
              </Form.Item>
-             <ErrorMessage component="div" name="email" />
-            <Form.Item label="Password" name="password">
-                  <TextInputs type="text" style={style.text_inputs} />
+
+            <Form.Item label="Password" name="password" value={values.password} onChange={(e)=>{
+                setFieldValue("password",e.target.value,true)
+            }}>
+                  <TextInputs type="password" style={errors.password ? style.text_errors : style.text_inputs} />
              </Form.Item> 
-             <ErrorMessage component="div" name="password" />
              </NotitFlex>
+
+             <NotitFlex direction="column" alignment="center">
               <Form.Item >
                 <NotitBtn type="primary" htmlType="submit" disabled={isSubmitting} text={isSubmitting ? "Loading...":"SIGNUP"}/>
              </Form.Item> 
+             </NotitFlex>
+
         </FormikForm>
     )}
 </Formik>

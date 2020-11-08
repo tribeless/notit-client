@@ -1,13 +1,15 @@
 import React from "react";
+import '../../Components/SignUpFormStyles.css';
 
-const NotitFlex = ({direction,children}) =>{
+const NotitFlex = ({direction,children,alignment}) =>{
     const styles ={
         display:"flex",
         flexDirection:direction || "row",
-        alignItems:"space-between"
+        alignItems:alignment || "space-between",
+        fontSize:"12px"
     }
     return (
-        <div style={styles}>{children}</div>
+        <div style={styles} className="fontStyleTwo">{children}</div>
     )
 }
 
