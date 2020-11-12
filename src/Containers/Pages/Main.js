@@ -1,14 +1,10 @@
-// import React,{useState} from 'react';
-// import SignUp from '../LandingPage/SignUp';
-// import {Switch,Route,Redirect} from 'react-router-dom';
-// import NotFound from './NotFound';
+// import React from 'react';
+// import Dashboard from './Dashboard';
 
 // const Main = () =>{
-
-
 //     return(
 //         <>
-//         <SignUp formData={formData} setFormData={setFormData}/>
+//         <Dashboard />
        
 //         </>
 //     )
