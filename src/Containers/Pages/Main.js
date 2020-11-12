@@ -1,13 +1,17 @@
-import React,{useState} from 'react';
-import SignUp from '../LandingPage/SignUp';
+// import React,{useState} from 'react';
+// import SignUp from '../LandingPage/SignUp';
+// import {Switch,Route,Redirect} from 'react-router-dom';
+// import NotFound from './NotFound';
 
-const Main = () =>{
-const [formData,setFormData] = useState({
-    data:{}
-});
-    return(
-        <SignUp formData={formData} setFormData={setFormData}/>
-    )
-}
+// const Main = () =>{
 
-export default Main;
+
+//     return(
+//         <>
+//         <SignUp formData={formData} setFormData={setFormData}/>
+       
+//         </>
+//     )
+// }
+
+// export default Main;
