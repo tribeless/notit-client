@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Alata';
+    font-weight: 400;
+    src: local('Alata'), url(../fonts/Alata-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Sen';
+    font-weight: 400;
+    src: local('Sen'), url(../fonts/Sen-Regular.ttf) format('truetype');
+}
+
+.fontStyle{
+    font-family:'Alata', sans-serif;
+}
+.fontStyleTwo{
+    font-family:'Sen', sans-serif;
+}
+.image{
+    margin-top:100px;
+    position:absolute;
+}
