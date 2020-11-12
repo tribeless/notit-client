@@ -1,7 +1,11 @@
 import React from "react";
 import '../../Components/SignUpFormStyles.css';
 
-const NotitFlex = ({direction,children,alignment}) =>{
+const NotitFlex = ({
+        direction,
+        children,
+        alignment
+    }) => {
     const styles ={
         display:"flex",
         flexDirection:direction || "row",

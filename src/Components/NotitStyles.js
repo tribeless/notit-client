@@ -40,6 +40,9 @@ const NotitStyles = () =>({
     },
     form_styles:{
         marginTop:"2rem"
+    },
+    social_icons:{
+        margin:"1.8rem 1rem"
     }
 })
 

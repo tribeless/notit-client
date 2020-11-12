@@ -7,9 +7,11 @@ import TextHolder from "../../Components/TextHolder";
 import Forms from './Form';
 import NotitFlex from './NotitFlex';
 import "../../Components/SignUpFormStyles.css"
+import { FaFacebookF, FaInstagram,FaTwitter} from "react-icons/fa";
+import NotitStyles from '../../Components/NotitStyles';
 
 const SignUp = ({formData,setFormData}) =>{
-
+    const style = NotitStyles();
     return (
 
         <NotItParentContainer>
@@ -26,6 +28,26 @@ const SignUp = ({formData,setFormData}) =>{
                     fontStyle="fontStyleTwo"
                     linkto="/"
                     link=" Sign in"/>
+                    </NotitFlex>
+                    <NotitFlex direction="row" alignment="space-evenly">
+                        <TextHolder size="16px"
+                            fontStyle="fontStyleTwo"
+                            linkto="/"
+                            link={
+                                <FaFacebookF style={style.social_icons}/>
+                            }/>
+                        <TextHolder size="16px"
+                            fontStyle="fontStyleTwo"
+                            linkto="/"
+                            link={
+                                <FaInstagram style={style.social_icons}/>
+                            }/>
+                        <TextHolder size="16px"
+                            fontStyle="fontStyleTwo"
+                            linkto="/"
+                            link={
+                                <FaTwitter style={style.social_icons}/>
+                            }/>
                     </NotitFlex>
             </NotItContainer>
         </NotItParentContainer>
