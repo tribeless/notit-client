@@ -1,12 +1,16 @@
 import React from 'react';
 import * as Yup from 'yup';
-import { Formik, Form as FormikForm ,ErrorMessage} from 'formik';
+import { Formik, Form as FormikForm } from 'formik';
 import { Form } from 'antd';
+import {useMutation} from '@apollo/react-hooks';
+import {useHistory} from "react-router-dom";
 import TextInputs from '../../Components/TextInputs';
 import NotitStyles from '../../Components/NotitStyles';
 import NotitBtn from '../../Components/NotitBtn';
 import NotitFlex from './NotitFlex';
 import {emailRegex,passwordRegex} from "../../Utils/Constants";
+import {SIGNUP_MUTATION} from "../../GraphQl/Mutations/SignUp";
+import {GET_TASKS} from "../../GraphQl/Queries/GetTasks";
 
 const SignUpFormValidation = Yup.object().shape({
     firstName:Yup.string().required(),
@@ -17,7 +21,9 @@ const SignUpFormValidation = Yup.object().shape({
 
 const Forms = ({formData,setFormData}) =>{
     const style = NotitStyles();
+    const [SignUpMutation,{loading,error}] = useMutation(SIGNUP_MUTATION);
     const {data} = formData;
+    const history = useHistory();
     return (
  <Formik 
 
@@ -43,6 +49,24 @@ const Forms = ({formData,setFormData}) =>{
             email:values.email,
             password:values.password
         }
+
+        SignUpMutation({
+             variables:{input}
+            //,
+            // refetchQueries:[{
+            //     query: GET_TASKS,
+            //     variables:{
+            //         taskType:"new",
+            //         awaitRefetchQueries:true
+            //     }
+            // }]
+        }).then((res)=>{
+            document.cookie = 'token=' + res.data.signUp.token
+            history.push("/dashboard")
+            console.log(res);
+        }).catch(res=>{
+            console.log(res);
+        })
     }}
 
     validationSchema={SignUpFormValidation}
@@ -79,7 +103,7 @@ const Forms = ({formData,setFormData}) =>{
 
              <NotitFlex direction="column" alignment="center">
               <Form.Item >
-                <NotitBtn type="primary" htmlType="submit" disabled={isSubmitting} text={isSubmitting ? "Loading...":"SIGNUP"}/>
+                <NotitBtn type="primary" htmlType="submit" disabled={isSubmitting} text={loading ? "Loading...":"SIGNUP"}/>
              </Form.Item> 
              </NotitFlex>
 

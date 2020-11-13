@@ -1,13 +1,13 @@
-import React,{useState} from 'react';
-import SignUp from '../LandingPage/SignUp';
+// import React from 'react';
+// import Dashboard from './Dashboard';
 
-const Main = () =>{
-const [formData,setFormData] = useState({
-    data:{}
-});
-    return(
-        <SignUp formData={formData} setFormData={setFormData}/>
-    )
-}
+// const Main = () =>{
+//     return(
+//         <>
+//         <Dashboard />
+       
+//         </>
+//     )
+// }
 
-export default Main;
+// export default Main;
