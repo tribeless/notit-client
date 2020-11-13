@@ -4,15 +4,16 @@ import {ApolloClient} from 'apollo-client';
 import {ApolloProvider} from 'react-apollo';
 import {onError} from 'apollo-link-error';
 import {ApolloLink} from 'apollo-link';
-import { createUploadLink } from 'apollo-upload-client';
+//import { createUploadLink } from 'apollo-upload-client';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const httpLink = createUploadLink({
-  uri: "http: //localhost:4003/graphql",
-  
+const httpLink = createHttpLink({
+  uri: "http://localhost:4003/graphql",
+  credentials:"include"
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
