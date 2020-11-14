@@ -7,7 +7,8 @@ const NotItParentContainer = ({bgColor,nheight,grid,children}) =>{
         display:"grid",
         gridTemplateColumns: grid || "repeat(auto-fit,minmax(50%,1fr))",
         gridTemplateRows: "1fr",
-        padding:"0"
+        padding:"0",
+        overflowY: "hidden"
     }
    return ( 
     <div style={style}>{children}</div>

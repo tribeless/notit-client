@@ -6,10 +6,10 @@ import {Link} from 'react-router-dom'
 
 const NotFound = () =>{
     return (
-        <SignUpContainer nheight="50px" bgColor="red">
-            <TextHolder text="The page you are looking for is not found. Please contact as if the problem persists." />
-            <Link to="/sign-up">
-                <NotItBtn htmlType="button" type="button" text="Go to Dashboard"/>
+        <SignUpContainer nheight="50px" bgColor="#F9E2A9">
+            <TextHolder text="Uooh,the page you are looking for is not available. Please contact us if the problem persists." />
+            <Link to="/">
+                <NotItBtn nwidth="130px" htmlType="button" type="button" text="Go to Dashboard"/>
             </Link>
         </SignUpContainer>
     )

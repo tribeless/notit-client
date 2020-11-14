@@ -9,7 +9,7 @@ const NotitStyles = () =>({
         borderRadius:"10px",
         border:"none",
         outlineStyle:"none",
-        margin:"0 0 1rem 0"
+        margin:"0 0 2rem 0"
     },
     errors:{
         backgroundColor:"#F1EFED",
@@ -18,7 +18,7 @@ const NotitStyles = () =>({
         borderRadius:"10px",
         borderColor:"red",
         outlineStyle:"none",
-        margin:"0 0 1rem 0"
+        margin:"0 0 2rem 0"
     },
     text_errors:{
         backgroundColor:"#F1EFED",
@@ -27,7 +27,7 @@ const NotitStyles = () =>({
         borderRadius:"10px",
         borderColor:"red",
         outlineStyle:"none",
-        margin:"0 0 1rem 0"
+        margin:"0 0 2rem 0"
     },
     text_inputs:{
         backgroundColor:"#F1EFED",
@@ -36,10 +36,13 @@ const NotitStyles = () =>({
         borderRadius:"10px",
         border:"none",
         outlineStyle: "none",
-        margin:"0 1rem 1rem 0"
+        margin:"0 1rem 2rem 0"
     },
     form_styles:{
         marginTop:"2rem"
+    },
+    signin_form_styles: {
+        marginTop: "2.5rem"
     },
     social_icons:{
         margin:"1.8rem 1rem"
