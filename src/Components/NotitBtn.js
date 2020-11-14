@@ -2,11 +2,11 @@ import React from "react";
 import {Button} from 'antd';
 import TextHolder from './TextHolder';
 
-const NotitBtn = ({disabled,type,htmlType,text})=>{
+const NotitBtn = ({disabled,type,htmlType,text,nwidth})=>{
 
     const styles = {
         height: "31px",
-        width: "75px",
+        width:nwidth || "75px",
         borderRadius: "10px",
         backgroundColor:"#F48C2C",
         outlineStyle:"none",
