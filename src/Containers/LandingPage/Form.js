@@ -62,7 +62,7 @@ const Forms = ({formData,setFormData}) =>{
             // }]
         }).then((res)=>{
             document.cookie = 'token=' + res.data.signUp.token
-            history.push("/dashboard")
+            history.push("/sign-in")
             console.log(res);
         }).catch(res=>{
             console.log(res);

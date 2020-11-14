@@ -26,7 +26,7 @@ const SignUp = ({formData,setFormData}) =>{
                 <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text="Already have an account? " />
                 <TextHolder size="11px"
                     fontStyle="fontStyleTwo"
-                    linkto="/"
+                    linkto="/sign-in"
                     link=" Sign in"/>
                     </NotitFlex>
                     <NotitFlex direction="row" alignment="space-evenly">
