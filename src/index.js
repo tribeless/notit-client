@@ -28,6 +28,12 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const cache = new InMemoryCache();
 
+const initData={
+  isLoggedIn:false
+}
+
+cache.writeData({data:initData});
+
 const link = ApolloLink.from([errorLink, httpLink]);
 
 const client = new ApolloClient({

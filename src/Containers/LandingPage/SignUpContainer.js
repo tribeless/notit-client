@@ -1,13 +1,24 @@
 import React from 'react';
 
-const NotItContainer = ({bgColor,nheight,nwidth,borderradius,children,margin,position,left,right}) =>{
+const NotItContainer = ({
+    bgColor,
+    nheight,
+    nwidth,
+    borderradius,
+    children,
+    margin,
+    position,
+    left,
+    right,
+    alignment
+}) =>{
     const style = {
         backgroundColor: bgColor || "#ffffff",
         height:nheight || "100vh",
         width: nwidth || "100%",
         borderRadius:borderradius || "0",
         display:"flex",
-        flexDirection:"column",
+        flexDirection:alignment || "column",
         alignItems:"center",
         margin:margin || '0',
         position:position || "static",

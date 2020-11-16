@@ -61,7 +61,6 @@ const Forms = ({formData,setFormData}) =>{
             //     }
             // }]
         }).then((res)=>{
-            document.cookie = 'token=' + res.data.signUp.token
             history.push("/sign-in")
             console.log(res);
         }).catch(res=>{
@@ -103,7 +102,7 @@ const Forms = ({formData,setFormData}) =>{
 
              <NotitFlex direction="column" alignment="center">
               <Form.Item >
-                <NotitBtn type="primary" htmlType="submit" disabled={isSubmitting} text={loading ? "Loading...":"SIGNUP"}/>
+                <NotitBtn type="primary" htmlType="submit" disabled={loading} text={loading ? "Loading...":"SIGNUP"}/>
              </Form.Item> 
              </NotitFlex>
 

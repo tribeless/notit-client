@@ -10,6 +10,9 @@ function App() {
   const [formData, setFormData] = useState({
     data: {}
   });
+
+  const [error,setError] = useState({message:"",open:false});
+
   return (
     <Router>
     {/* <Main /> */}
@@ -21,7 +24,7 @@ function App() {
                 <SignUp formData={formData} setFormData={setFormData}/>
             </Route>
             <Route exact path="/sign-in" >
-              <SignInPage />
+              <SignInPage errorMessage={error} setError={setError} />
             </Route>
             <Route path='/404' component={NotFound} />
             <Redirect from="*" to="/404" />

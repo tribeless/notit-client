@@ -1,13 +1,10 @@
-// import React from 'react';
-// import Dashboard from './Dashboard';
+import React from 'react';
+import Header from "../../Components/Header";
 
-// const Main = () =>{
-//     return(
-//         <>
-//         <Dashboard />
-       
-//         </>
-//     )
-// }
+const Main = ({name}) =>{
+    return(
+        <Header name={name} />
+    )
+}
 
-// export default Main;
+export default Main;

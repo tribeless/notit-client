@@ -8,3 +8,13 @@ export const GET_TASKS = gql`
         }
     }
 `;
+
+export const GET_USERS = gql `
+    query{
+        usersDetails {
+            email
+            firstName
+            lastName
+        }
+    }
+`;

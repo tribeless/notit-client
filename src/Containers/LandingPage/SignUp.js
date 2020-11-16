@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import NotItContainer from './SignUpContainer';
 import signup from '../../Assets/Images/signup.png';
 import NotItParentContainer from './NotitParentContainer'
@@ -24,10 +25,11 @@ const SignUp = ({formData,setFormData}) =>{
                 <Forms formData={formData} setFormData={setFormData}/>
                 <NotitFlex direction="row">
                 <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text="Already have an account? " />
+                <Link to="/sign-in">
                 <TextHolder size="11px"
                     fontStyle="fontStyleTwo"
-                    linkto="/sign-in"
                     link=" Sign in"/>
+                    </Link>
                     </NotitFlex>
                     <NotitFlex direction="row" alignment="space-evenly">
                         <TextHolder size="16px"
