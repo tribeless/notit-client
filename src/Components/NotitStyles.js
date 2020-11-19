@@ -46,6 +46,11 @@ const NotitStyles = () =>({
     },
     social_icons:{
         margin:"1.8rem 1rem"
+    },
+    shadow:{
+        boxShadow: "0px 9px 5px -1px rgba(0,0,0,0.63)",
+        webkitBoxShadow: "0px 9px 5px -1px rgba(0,0,0,0.63)",
+        mozBoxShadow: "0px 9px 5px -1px rgba(0,0,0,0.63)"
     }
 })
 

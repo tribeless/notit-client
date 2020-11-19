@@ -6,12 +6,12 @@ const Greeting = ({name})=>{
 
      const hours = date.getHours();
 
-     if (hours > 12 && hours < 16) {
-         return <TextHolder text={"Good Afternoon " + name}/>;
-     } else if (hours > 16) {
-         return <TextHolder text={"Good Evening " + name}/>;
+     if (hours > 11 && hours < 17) {
+         return <TextHolder size="17px" text={"Good Afternoon " + name} top="0"/>;
+     } else if (hours > 16 ) {
+         return <TextHolder size="17px" text={"Good Evening " + name} top="0"/>;
      } else {
-         return <TextHolder text={"Good Morning " + name}/>;
+         return <TextHolder size="17px" text={"Good Morning " + name} top="0"/>;
      }
 }
 

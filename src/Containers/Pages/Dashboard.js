@@ -9,7 +9,7 @@ import Main from "./Main";
 
 const Dashboard = ()=>{
     const history = useHistory();
-    const {loading,error,data} = useQuery(GET_USERS);
+    const {loading,data} = useQuery(GET_USERS);
     const {data:{isLoggedIn}} = useQuery(CLIENT_QUERY);
 
      if (!isLoggedIn) {

@@ -1,6 +1,5 @@
 import React,{useState}  from 'react';
 import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom';
-import Main from './Containers/Pages/Main';
 import SignUp from './Containers/LandingPage/SignUp';
 import NotFound from './Containers/Pages/NotFound';
 import Dashboard from "./Containers/Pages/Dashboard";
@@ -15,7 +14,6 @@ function App() {
 
   return (
     <Router>
-    {/* <Main /> */}
      <Switch>
             <Route exact path="/">
               <Dashboard />

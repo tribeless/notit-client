@@ -10,7 +10,9 @@ const NotItContainer = ({
     position,
     left,
     right,
-    alignment
+    alignment,
+    alignmentX,
+    content
 }) =>{
     const style = {
         backgroundColor: bgColor || "#ffffff",
@@ -19,7 +21,8 @@ const NotItContainer = ({
         borderRadius:borderradius || "0",
         display:"flex",
         flexDirection:alignment || "column",
-        alignItems:"center",
+        alignItems:alignmentX || "center",
+        justifyContent:content || "none" ,
         margin:margin || '0',
         position:position || "static",
         left:left || "0",

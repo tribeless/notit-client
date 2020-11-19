@@ -1,4 +1,4 @@
-import Images from "./Images";
+import React from "react";
 import TextHolder from "./TextHolder";
 import NotitFlex from "../Containers/LandingPage/NotitFlex";
 import logo from "../Assets/Images/logo.png";
@@ -6,9 +6,9 @@ import logo from "../Assets/Images/logo.png";
 
 const Logo = ()=>{
     return (
-        <NotitFlex alignment="space-evenly">
-            <Images src={logo} alt="user's avatar" nwidth="30px" nheight="30px" bRadius="100%"/>
-            <TextHolder text="NOTIT" fontStyle="fontStyleTwo" />
+        <NotitFlex alignment="center" alignmentX="center">
+            <img src={logo} alt="notit logo" style={{width:"30px",height:"30px",borderRadius:"100%"}} />
+            <TextHolder size="1.625rem" text="NOTIT" fontStyle="fontStyleTwo" top="0"/>
         </NotitFlex>
     )
 }

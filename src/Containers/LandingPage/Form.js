@@ -10,7 +10,7 @@ import NotitBtn from '../../Components/NotitBtn';
 import NotitFlex from './NotitFlex';
 import {emailRegex,passwordRegex} from "../../Utils/Constants";
 import {SIGNUP_MUTATION} from "../../GraphQl/Mutations/SignUp";
-import {GET_TASKS} from "../../GraphQl/Queries/GetTasks";
+
 
 const SignUpFormValidation = Yup.object().shape({
     firstName:Yup.string().required(),
@@ -21,7 +21,7 @@ const SignUpFormValidation = Yup.object().shape({
 
 const Forms = ({formData,setFormData}) =>{
     const style = NotitStyles();
-    const [SignUpMutation,{loading,error}] = useMutation(SIGNUP_MUTATION);
+    const [SignUpMutation,{loading}] = useMutation(SIGNUP_MUTATION);
     const {data} = formData;
     const history = useHistory();
     return (
@@ -52,7 +52,7 @@ const Forms = ({formData,setFormData}) =>{
 
         SignUpMutation({
              variables:{input}
-            //,
+            ,
             // refetchQueries:[{
             //     query: GET_TASKS,
             //     variables:{

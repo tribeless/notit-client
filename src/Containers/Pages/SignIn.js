@@ -3,8 +3,7 @@ import {Formik,Form as FormikForm} from 'formik';
 import { useApolloClient } from "@apollo/react-hooks";
 import * as Yup from 'yup';
 import {useMutation} from "@apollo/react-hooks";
-import Cookies from "js-cookie";
-import {useHistory,Link,Redirect} from 'react-router-dom';
+import {useHistory,Link} from 'react-router-dom';
 import { Form } from 'antd';
 import NotItContainer from '../LandingPage/SignUpContainer';
 import signin from '../../Assets/Images/signin.png';
@@ -19,7 +18,7 @@ import NotitBtn from '../../Components/NotitBtn';
 import {emailRegex,passwordRegex} from "../../Utils/Constants";
 import SIGNIN_MUTATION from "../../GraphQl/Mutations/SignIn";
 import ErrorContent from "../../Components/ErrorContent";
-import graphQlError from "../../Utils/Errors";
+
 
 const SignInFormValidation = Yup.object().shape({
     email:Yup.string().matches(emailRegex,"please enter valid email").required(),
