@@ -1,8 +1,9 @@
 import React from 'react';
 import {Formik,Form as FormikForm} from 'formik';
+import { useApolloClient } from "@apollo/react-hooks";
 import * as Yup from 'yup';
 import {useMutation} from "@apollo/react-hooks";
-import {useHistory} from 'react-router-dom';
+import {useHistory,Link} from 'react-router-dom';
 import { Form } from 'antd';
 import NotItContainer from '../LandingPage/SignUpContainer';
 import signin from '../../Assets/Images/signin.png';
@@ -16,16 +17,25 @@ import NotitStyles from '../../Components/NotitStyles';
 import NotitBtn from '../../Components/NotitBtn';
 import {emailRegex,passwordRegex} from "../../Utils/Constants";
 import SIGNIN_MUTATION from "../../GraphQl/Mutations/SignIn";
+import ErrorContent from "../../Components/ErrorContent";
 
 
 const SignInFormValidation = Yup.object().shape({
     email:Yup.string().matches(emailRegex,"please enter valid email").required(),
     password:Yup.string().matches(passwordRegex,"please enter valid password").required()
 })
-const SignInPage = ()=>{
+const SignInPage = ({
+    errorMessage,
+    setError
+})=>{
+    const {message,open} = errorMessage;
     const style = NotitStyles();
-    const [SignUpMutation,{loading}] = useMutation(SIGNIN_MUTATION);
+    const [SignInMutation,{loading}] = useMutation(SIGNIN_MUTATION);
+    const clientState = useApolloClient();
     const history = useHistory();
+    const handleClose = ()=>{
+        setError({message:"",open:false});
+    }
     return (
         <NotItParentContainer bgColor="#F9E2A9" grid="repeat(auto-fit,minmax(300px,50%)">
             <NotItContainer bgColor="#F9E2A9" 
@@ -40,6 +50,10 @@ const SignInPage = ()=>{
             <NotItContainer borderradius="20px" nheight="90vh" nwidth="400px" margin="2.2rem -3rem 3rem" 
             position="relative" left="200px" right="-200px"
             >
+                {
+                   open && <ErrorContent message={message} handleClose={handleClose} />
+                }
+                
                 <TextHolder fontStyle="fontStyleTwo" title="Sign In" top="5rem"/>
                 <Formik
                     initialValues={{
@@ -48,23 +62,27 @@ const SignInPage = ()=>{
                     }}
 
                     onSubmit={(values)=>{
-                        SignUpMutation({
+                        SignInMutation({
                             variables:{
                                 email:values.email,
                                 password:values.password
                             }
                         }).then((res)=>{
-                            history.push("/");
-                            console.log(res)
+                            clientState.writeData({
+                                data:{isLoggedIn:true}
+                            })
+                            history.push("/")
                         })
                         .catch((res)=>{
-                            console.log(res);
+                            
+                             //setError({message:graphQlError(mutationError),open:true})
+                            // console.log(res,res.Error);
                         })
                     }}
 
                     validationSchema={SignInFormValidation}
                 >
-            {({setFieldValue,values,errors,isSubmitting})=>(
+            {({setFieldValue,values,errors})=>(
                 <FormikForm style={style.signin_form_styles}>
                     <NotitFlex direction="column">
                     <Form.Item label="Email" name="email" value={values.email} onChange={(e)=>{
@@ -81,16 +99,25 @@ const SignInPage = ()=>{
                     </NotitFlex>
                     <NotitFlex direction="column" alignment="center">
                         <Form.Item >
-                            <NotitBtn type="primary" htmlType="submit" disabled={loading} text={isSubmitting ? "Loading...":"SIGNIN"}/>
+                            <NotitBtn type="primary" htmlType="submit" disabled={loading} text={loading ? "Loading...":"SIGNIN"}/>
                         </Form.Item> 
                     </NotitFlex>
                    
                 </FormikForm>
             )}
                 </Formik>
-                 <NotitFlex direction="row">
-                        <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" link="Forgot Password? " linkto="/sign-in" />
+                <NotitFlex direction="row">
+                        <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text="Don't have an account? "/>
+                        <Link to="/sign-up">
+                        <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text=" Sign up? "/>
+                            </Link>
                     </NotitFlex>
+                 <NotitFlex direction="row">
+                     <Link to="/sign-in">
+                        <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text="Forgot Password? " />
+                        </Link>
+                    </NotitFlex>
+                    
             </NotItContainer>
         </NotItParentContainer>
     )

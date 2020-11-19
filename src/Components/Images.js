@@ -3,8 +3,8 @@ import {Image} from 'antd';
 
 const Images = ({nwidth,nheight,bRadius,topMargin,...others})=>{
     const styles = {
-        width:nwidth || "auto",
-        height:nheight || "auto",
+        width:nwidth ,
+        height:nheight ,
         borderRadius:bRadius || "none",
     }
     return (
