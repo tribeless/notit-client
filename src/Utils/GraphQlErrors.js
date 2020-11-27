@@ -1,12 +1,22 @@
-// import {onError} from 'apollo-link-error';
+import {useHistory} from "react-router-dom";
+import deleteCookie from "./deleteCookie";
 
-// const errorLink = onError(({networkError }) => {
-//   if (networkError) console.log(`[Network error]: ${networkError}`);
-// });
 
-//   //if (graphQLErrors)
-//   //     graphQLErrors.forEach(({ message, locations, path }) =>
-//   //       console.log(
-//   //         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-//   //       )
-//   //     );
+const GraphQlErrors = ({error})=>{
+    const history = useHistory();
+    
+    return (
+        error.graphQLErrors.map(({message})=>{
+            if(message==="Please signIn") 
+            {
+                deleteCookie("signedin")
+                history.push("/sign-in");
+                
+            }
+            else{
+                return <h1 key={message}>{message}</h1>
+            }
+               
+        }))
+}
+export default GraphQlErrors;

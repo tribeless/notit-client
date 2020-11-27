@@ -18,6 +18,8 @@ import NotitBtn from '../../Components/NotitBtn';
 import {emailRegex,passwordRegex} from "../../Utils/Constants";
 import SIGNIN_MUTATION from "../../GraphQl/Mutations/SignIn";
 import ErrorContent from "../../Components/ErrorContent";
+import errors from "../../Utils/Errors";
+import { CLIENT_QUERY} from "../../GraphQl/Queries/GraphQlClientQueries";
 
 
 const SignInFormValidation = Yup.object().shape({
@@ -30,7 +32,7 @@ const SignInPage = ({
 })=>{
     const {message,open} = errorMessage;
     const style = NotitStyles();
-    const [SignInMutation,{loading}] = useMutation(SIGNIN_MUTATION);
+    const [SignInMutation,{loading,error}] = useMutation(SIGNIN_MUTATION);
     const clientState = useApolloClient();
     const history = useHistory();
     const handleClose = ()=>{
@@ -68,15 +70,17 @@ const SignInPage = ({
                                 password:values.password
                             }
                         }).then((res)=>{
-                            clientState.writeData({
-                                data:{isLoggedIn:true}
+                            clientState.writeQuery({
+                                query: CLIENT_QUERY,
+                                data:{
+                                    authorId:res.data.signIn.id
+                                }
                             })
+                            document.cookie = 'signedin=true' ;
                             history.push("/")
                         })
                         .catch((res)=>{
-                            
-                             //setError({message:graphQlError(mutationError),open:true})
-                            // console.log(res,res.Error);
+                             setError({message:res.message,open:true}) 
                         })
                     }}
 
@@ -123,4 +127,4 @@ const SignInPage = ({
     )
 }
 
-export default SignInPage;
+export default React.memo(SignInPage);
