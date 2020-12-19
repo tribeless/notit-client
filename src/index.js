@@ -11,6 +11,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+require('dotenv').config();
+const configValues = process.env;
+
 const httpLink = createHttpLink({
   uri: "http://localhost:4003/graphql",
   credentials:"include"
@@ -19,17 +22,18 @@ const httpLink = createHttpLink({
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.forEach(({ message, locations, path }) =>
+  { 
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-      )
+      )}
     );
-  if (networkError) console.log(`[Network error]: ${networkError}`);
+  if (networkError) console.log(`[Network error]: ${networkError}`,networkError.statusCode);
 });
 
 const cache = new InMemoryCache();
 
 const initData={
-  isLoggedIn:false
+  authorId:""
 }
 
 cache.writeData({data:initData});

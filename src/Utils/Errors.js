@@ -1,7 +1,10 @@
-const graphQlError = (error) => {
-     error.graphQLErrors.map(({message}) => {
-        return message;
-     })     
-}
+const graphQlErrors = (error) => {
 
-export default graphQlError;
+   return (
+      error.graphQLErrors.map(({
+         message
+      }) => {
+         return message;
+      }))
+}
+export default graphQlErrors;

@@ -18,6 +18,8 @@ import NotitBtn from '../../Components/NotitBtn';
 import {emailRegex,passwordRegex} from "../../Utils/Constants";
 import SIGNIN_MUTATION from "../../GraphQl/Mutations/SignIn";
 import ErrorContent from "../../Components/ErrorContent";
+import graphQlErrors from "../../Utils/Errors";
+import { CLIENT_QUERY} from "../../GraphQl/Queries/GraphQlClientQueries";
 
 
 const SignInFormValidation = Yup.object().shape({
@@ -68,15 +70,16 @@ const SignInPage = ({
                                 password:values.password
                             }
                         }).then((res)=>{
-                            clientState.writeData({
-                                data:{isLoggedIn:true}
+                            clientState.writeQuery({
+                                query: CLIENT_QUERY,
+                                data:{
+                                    authorId:res.data.signIn.id
+                                }
                             })
                             history.push("/")
                         })
                         .catch((res)=>{
-                            
-                             //setError({message:graphQlError(mutationError),open:true})
-                            // console.log(res,res.Error);
+                             setError({message:graphQlErrors(res),open:true}) 
                         })
                     }}
 
@@ -123,4 +126,4 @@ const SignInPage = ({
     )
 }
 
-export default SignInPage;
+export default React.memo(SignInPage);

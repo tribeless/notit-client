@@ -3,7 +3,10 @@ import TaskLayout from "./TaskLayout";
 import NotItContainer from "../../LandingPage/SignUpContainer";
 
 
-const MainBody = ()=>{
+const MainBody = ({
+        errorMessage,
+        setError
+    }) => {
 
     return (
         <NotItContainer
@@ -13,9 +16,18 @@ const MainBody = ()=>{
             content="space-between"
             margin="4.5rem 0 0 0"
         >
-            <TaskLayout />
-            <TaskLayout />
-            <TaskLayout />
+            <TaskLayout 
+                errorMessage={errorMessage}
+                setError={setError}
+            />
+            <TaskLayout 
+                errorMessage={errorMessage}
+                setError={setError}
+            />
+            <TaskLayout 
+                errorMessage={errorMessage}
+                setError={setError}
+            />
         </NotItContainer>
     )
 }
