@@ -9,12 +9,19 @@ import {ADD_USER_TASK} from "../../../GraphQl/Mutations/AddTask";
 import {CLIENT_QUERY} from "../../../GraphQl/Queries/GraphQlClientQueries";
 import {GET_TASKS} from "../../../GraphQl/Queries/GetTasks";
 import NotitStyles from '../../../Components/NotitStyles';
+import graphQlErrors from "../../../Utils/Errors";
 
-const AddTasks = ()=>{
+const AddTasks = ({
+    errorMessage,
+    setError
+})=>{
 
     const [AddTaskMutation,{loading}] = useMutation(ADD_USER_TASK);
     const {data:{authorId}} = useQuery(CLIENT_QUERY);
-
+    // const handleClose = ()=>{
+    //     setError({message:"",open:false});
+    // }
+    //const {message,open} = errorMessage;
     const style = NotitStyles();
     
     return (
@@ -26,7 +33,7 @@ const AddTasks = ()=>{
             onSubmit={(values)=>{
                 //call the mutation
                 const input = {
-                    taskType:"new",
+                    taskType:"d",
                     message:values.message,
                     authorId:authorId
                 }
@@ -41,8 +48,9 @@ const AddTasks = ()=>{
                 .then((res)=>{
                     console.log(res.message)
                 })
-                .catch((err)=>{
-                    console.log(err.message)
+                .catch((res)=>{
+                    console.log(res)
+                    setError({message:graphQlErrors(res),open:true}) 
                 })
             }}
         >

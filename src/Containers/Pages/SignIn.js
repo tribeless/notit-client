@@ -18,7 +18,7 @@ import NotitBtn from '../../Components/NotitBtn';
 import {emailRegex,passwordRegex} from "../../Utils/Constants";
 import SIGNIN_MUTATION from "../../GraphQl/Mutations/SignIn";
 import ErrorContent from "../../Components/ErrorContent";
-import errors from "../../Utils/Errors";
+import graphQlErrors from "../../Utils/Errors";
 import { CLIENT_QUERY} from "../../GraphQl/Queries/GraphQlClientQueries";
 
 
@@ -32,7 +32,7 @@ const SignInPage = ({
 })=>{
     const {message,open} = errorMessage;
     const style = NotitStyles();
-    const [SignInMutation,{loading,error}] = useMutation(SIGNIN_MUTATION);
+    const [SignInMutation,{loading}] = useMutation(SIGNIN_MUTATION);
     const clientState = useApolloClient();
     const history = useHistory();
     const handleClose = ()=>{
@@ -76,11 +76,10 @@ const SignInPage = ({
                                     authorId:res.data.signIn.id
                                 }
                             })
-                            document.cookie = 'signedin=true' ;
                             history.push("/")
                         })
                         .catch((res)=>{
-                             setError({message:res.message,open:true}) 
+                             setError({message:graphQlErrors(res),open:true}) 
                         })
                     }}
 

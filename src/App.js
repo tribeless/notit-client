@@ -4,6 +4,7 @@ import SignUp from './Containers/LandingPage/SignUp';
 import NotFound from './Containers/Pages/NotFound';
 import Dashboard from "./Containers/Pages/Dashboard";
 import SignInPage from "./Containers/Pages/SignIn";
+import AuthenticatedRoute from "./Components/Auth/AuthenticatedRoute";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -15,9 +16,7 @@ function App() {
   return (
     <Router>
      <Switch>
-            <Route exact path="/">
-              <Dashboard />
-            </Route>
+            <AuthenticatedRoute exact path="/" component={Dashboard} />
             <Route exact path="/sign-up">
                 <SignUp formData={formData} setFormData={setFormData}/>
             </Route>
