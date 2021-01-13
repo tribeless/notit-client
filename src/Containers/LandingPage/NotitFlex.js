@@ -14,7 +14,8 @@ const NotitFlex = ({
         padding,
         bgColor,
         margin,
-        bRadius
+        bRadius,
+        onClick,
     }) => {
     // const shadowStyle = NotitStyles();
     const styles ={
@@ -33,7 +34,7 @@ const NotitFlex = ({
         borderRadius:bRadius || "0"
     }
     return (
-        <div style={styles} className="fontStyleTwo">{children}</div>
+        <div onClick={onClick} style={styles} className="fontStyleTwo">{children}</div>
     )
 }
 

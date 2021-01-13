@@ -5,6 +5,7 @@ import NotFound from './Containers/Pages/NotFound';
 import Dashboard from "./Containers/Pages/Dashboard";
 import SignInPage from "./Containers/Pages/SignIn";
 import AuthenticatedRoute from "./Components/Auth/AuthenticatedRoute";
+import Settings from "./Containers/Pages/UserSettings/Settings";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -23,6 +24,7 @@ function App() {
             <Route exact path="/sign-in" >
               <SignInPage errorMessage={error} setError={setError} />
             </Route>
+            <AuthenticatedRoute exact path="/profile" component={Settings} />
             <Route path='/404' component={NotFound} />
             <Redirect from="*" to="/404" />
         </Switch>

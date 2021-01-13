@@ -52,14 +52,6 @@ const Forms = ({formData,setFormData}) =>{
 
         SignUpMutation({
              variables:{input}
-            ,
-            // refetchQueries:[{
-            //     query: GET_TASKS,
-            //     variables:{
-            //         taskType:"new",
-            //         awaitRefetchQueries:true
-            //     }
-            // }]
         }).then((res)=>{
             history.push("/sign-in")
             console.log(res);

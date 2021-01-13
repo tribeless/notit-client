@@ -12,7 +12,8 @@ const NotItContainer = ({
     right,
     alignment,
     alignmentX,
-    content
+    content,
+    padding
 }) =>{
     const style = {
         backgroundColor: bgColor || "#ffffff",
@@ -26,7 +27,8 @@ const NotItContainer = ({
         margin:margin || '0',
         position:position || "static",
         left:left || "0",
-        right:right || "0"
+        right:right || "0",
+        padding:padding || "0"
         
     }
    return ( 
