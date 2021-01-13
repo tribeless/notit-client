@@ -38,6 +38,14 @@ const NotitStyles = () =>({
         outlineStyle: "none",
         margin:"0 1rem 2rem 0"
     },
+    task_inputs:{
+        backgroundColor:"#F1EFED",
+        width:"236px",
+        height:"36px",
+        borderRadius:"10px",
+        border:"none",
+        outlineStyle: "none"
+    },
     form_styles:{
         marginTop:"2rem"
     },

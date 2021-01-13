@@ -1,14 +1,10 @@
 import React from 'react';
 import {Image} from 'antd';
 
-const Images = ({nwidth,nheight,bRadius,topMargin,...others})=>{
-    const styles = {
-        width:nwidth ,
-        height:nheight ,
-        borderRadius:bRadius || "none",
-    }
+const Images = ({styles,divClass,...rest})=>{
+
     return (
-        <Image style={styles} {...others}/>
+        <img className={divClass} {...rest} />
     )
 }
 

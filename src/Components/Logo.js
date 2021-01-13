@@ -8,7 +8,7 @@ const Logo = ()=>{
     return (
         <NotitFlex alignment="center" alignmentX="center">
             <img src={logo} alt="notit logo" style={{width:"30px",height:"30px",borderRadius:"100%"}} />
-            <TextHolder size="1.625rem" text="NOTIT" fontStyle="fontStyleTwo" top="0"/>
+            <TextHolder size="20px" text="NOTIT" fontStyle="fontStyleTwo" top="0"/>
         </NotitFlex>
     )
 }

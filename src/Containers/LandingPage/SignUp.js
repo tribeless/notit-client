@@ -23,12 +23,14 @@ const SignUp = ({formData,setFormData}) =>{
             <NotItContainer>
                 <TextHolder fontStyle="fontStyle" title="Create account" top="5rem"/>
                 <Forms formData={formData} setFormData={setFormData}/>
-                <NotitFlex direction="row">
-                <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text="Already have an account? " />
+                <NotitFlex direction="row" alignment="center" alignmentX="flex-start">
+                <TextHolder size="11px" top="0" fontStyle="fontStyleTwo" color="#808080" text="Already have an account? " />
                 <Link to="/sign-in">
                 <TextHolder size="11px"
                     fontStyle="fontStyleTwo"
-                    link=" Sign in"/>
+                    text=" Sign in"
+                    top="0"
+                    />
                     </Link>
                     </NotitFlex>
                     <NotitFlex direction="row" alignment="space-evenly">

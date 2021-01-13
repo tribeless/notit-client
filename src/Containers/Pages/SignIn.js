@@ -19,7 +19,7 @@ import {emailRegex,passwordRegex} from "../../Utils/Constants";
 import SIGNIN_MUTATION from "../../GraphQl/Mutations/SignIn";
 import ErrorContent from "../../Components/ErrorContent";
 import graphQlErrors from "../../Utils/Errors";
-import { CLIENT_QUERY} from "../../GraphQl/Queries/GraphQlClientQueries";
+import { OPEN_FORM} from "../../GraphQl/Queries/GraphQlClientQueries";
 
 
 const SignInFormValidation = Yup.object().shape({
@@ -71,7 +71,7 @@ const SignInPage = ({
                             }
                         }).then((res)=>{
                             clientState.writeQuery({
-                                query: CLIENT_QUERY,
+                                query: OPEN_FORM,
                                 data:{
                                     authorId:res.data.signIn.id
                                 }
@@ -109,8 +109,8 @@ const SignInPage = ({
                 </FormikForm>
             )}
                 </Formik>
-                <NotitFlex direction="row">
-                        <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text="Don't have an account? "/>
+                <NotitFlex direction="row" alignment="center" alignmentX="flex-start">
+                        <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" top="0" text="Don't have an account? "/>
                         <Link to="/sign-up">
                         <TextHolder size="11px" fontStyle="fontStyleTwo" color="#808080" text=" Sign up? "/>
                             </Link>
