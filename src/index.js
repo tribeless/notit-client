@@ -16,7 +16,7 @@ require('dotenv').config();
 const configValues = process.env;
 
 const httpLink = createUploadLink({
-  uri: "http://localhost:4003/graphql",
+  uri: "https://notit-server.herokuapp.com/graphql",
   credentials:"include"
 });
 
