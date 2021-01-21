@@ -85,7 +85,7 @@ const Forms = ({formData,setFormData}) =>{
                   <TextInputs type="text" style={errors.email ? style.text_errors : style.text_inputs}/>
              </Form.Item>
 
-            <Form.Item label="Password" name="password" value={values.password} onChange={(e)=>{
+            <Form.Item label="Password|use uppercase,symbols,length longer than 8" name="password" value={values.password} onChange={(e)=>{
                 setFieldValue("password",e.target.value,true)
             }}>
                   <TextInputs type="password" style={errors.password ? style.text_errors : style.text_inputs} />
